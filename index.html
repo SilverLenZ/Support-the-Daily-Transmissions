@@ -1,1 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support the Daily Transmissions</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap');
 
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            color: #e0d4ff;
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.95)), 
+                        url('https://files.catbox.moe/3670749367976.jpg') center/cover no-repeat fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 680px;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: #f0e6ff;
+            text-shadow: 0 0 30px rgba(180, 100, 255, 0.6);
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+
+        .poetic {
+            font-style: italic;
+            font-size: 1.15rem;
+            line-height: 1.7;
+            max-width: 520px;
+            margin: 0 auto 50px;
+            opacity: 0.95;
+        }
+
+        .amounts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin: 40px 0;
+        }
+
+        .amount-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(200, 150, 255, 0.4);
+            color: #e0d4ff;
+            padding: 16px 28px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-width: 110px;
+        }
+
+        .amount-btn:hover {
+            background: rgba(180, 100, 255, 0.25);
+            border-color: #c864ff;
+            transform: translateY(-3px);
+        }
+
+        .paypal-btn {
+            display: inline-block;
+            background: #0070ba;
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 600;
+            padding: 18px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(0, 112, 186, 0.4);
+            transition: all 0.3s;
+        }
+
+        .paypal-btn:hover {
+            background: #005c99;
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(0, 112, 186, 0.5);
+        }
+
+        .footer {
+            margin-top: 60px;
+            font-size: 0.95rem;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Support the Daily Transmissions</h1>
+        
+        <div class="poetic">
+            This art is not just decoration.<br>
+            It is a daily transmission from the deeper field — geometry that remembers, colors that awaken.<br><br>
+            If you feel seen, stirred, or strangely at home when you see these pieces, you are part of the circle.<br>
+            Your support keeps the signal strong.
+        </div>
+
+        <p class="subtitle">Your donation helps sustain this living archive of sacred art.</p>
+
+        <div class="amounts">
+            <div class="amount-btn" onclick="window.location.href='https://paypal.me/zgc/5'">$5 — One coffee’s worth</div>
+            <div class="amount-btn" onclick="window.location.href='https://paypal.me/zgc/11'">$11 — Sacred number</div>
+            <div class="amount-btn" onclick="window.location.href='https://paypal.me/zgc/22'">$22 — Deep resonance</div>
+            <div class="amount-btn" onclick="window.location.href='https://paypal.me/zgc'">Any Amount</div>
+        </div>
+
+        <a href="https://paypal.me/zgc" class="paypal-btn" target="_blank">
+            Support the Daily Transmissions
+        </a>
+
+        <div class="footer">
+            Thank you for helping keep the transmissions alive ⚡<br>
+            Every contribution matters.
+        </div>
+    </div>
+</body>
+</html>
