@@ -12,8 +12,8 @@
             padding: 0;
             font-family: 'Inter', sans-serif;
             color: #e0d4ff;
-            background: linear-gradient(rgba(0,0,0,0.88), rgba(0,0,0,0.92)), 
-                        url('https://files.catbox.moe/10200094531946703.jpg') center/cover no-repeat fixed;
+            background: linear-gradient(rgba(0,0,0,0.88), rgba(0,0,0,0.94)), 
+                        url('https://files.catbox.moe/goidia.jpg') center/cover no-repeat fixed;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -24,6 +24,8 @@
         .container {
             max-width: 680px;
             padding: 40px 20px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
         }
 
         h1 {
@@ -31,7 +33,7 @@
             font-size: 2.8rem;
             margin-bottom: 20px;
             color: #f0e6ff;
-            text-shadow: 0 0 30px rgba(180, 100, 255, 0.5);
+            text-shadow: 0 0 30px rgba(180, 100, 255, 0.6);
         }
 
         .poetic {
@@ -43,12 +45,6 @@
             opacity: 0.95;
         }
 
-        .subtitle {
-            font-size: 1.25rem;
-            opacity: 0.85;
-            margin-bottom: 40px;
-        }
-
         .amounts {
             display: flex;
             flex-wrap: wrap;
@@ -58,21 +54,19 @@
         }
 
         .amount-btn {
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(200, 160, 255, 0.4);
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(200, 160, 255, 0.5);
             color: #e0d4ff;
             padding: 16px 32px;
             border-radius: 50px;
             font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s;
-            min-width: 120px;
         }
 
         .amount-btn:hover {
-            background: rgba(180, 100, 255, 0.25);
-            border-color: #c864ff;
-            transform: translateY(-4px);
+            background: rgba(180, 100, 255, 0.3);
+            transform: translateY(-3px);
         }
 
         .paypal-btn {
@@ -86,19 +80,11 @@
             text-decoration: none;
             margin-top: 30px;
             box-shadow: 0 10px 30px rgba(0, 112, 186, 0.4);
-            transition: all 0.3s;
         }
 
         .paypal-btn:hover {
             background: #005c99;
             transform: translateY(-4px);
-            box-shadow: 0 15px 40px rgba(0, 112, 186, 0.5);
-        }
-
-        .footer {
-            margin-top: 70px;
-            font-size: 0.95rem;
-            opacity: 0.75;
         }
     </style>
 </head>
@@ -126,9 +112,8 @@
             Support the Daily Transmissions
         </a>
 
-        <div class="footer">
-            Thank you for helping keep the transmissions alive ⚡<br>
-            Every contribution matters.
+        <div style="margin-top: 60px; opacity: 0.7; font-size: 0.95rem;">
+            Thank you for helping keep the transmissions alive ⚡
         </div>
     </div>
 </body>
