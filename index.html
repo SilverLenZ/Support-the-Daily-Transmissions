@@ -1,120 +1,276 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support the Daily Transmissions</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap');
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090912">
+  <meta name="description" content="Help keep Zack Covell's daily art and sacred-geometry transmissions alive.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <title>Keep the Signal Alive — Daily Transmissions</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --night: #090912;
+      --panel: #11111e;
+      --line: rgb(211 204 255 / 15%);
+      --white: #f6f2ff;
+      --soft: #c0bbd3;
+      --muted: #8e89a6;
+      --lime: #d6e28a;
+      --violet: #a991ff;
+      --rose: #ffad9c;
+      --serif: Georgia, "Times New Roman", serif;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { min-width: 320px; scroll-behavior: smooth; }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--white);
+      background:
+        radial-gradient(ellipse at 75% 12%, rgb(108 76 180 / 19%), transparent 35rem),
+        radial-gradient(ellipse at 4% 61%, rgb(54 111 119 / 11%), transparent 34rem),
+        var(--night);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    body::before {
+      position: fixed;
+      z-index: -1;
+      inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 17px 31px, rgb(255 255 255 / 65%) 99%, transparent),
+        radial-gradient(1px 1px at 89px 73px, rgb(214 226 138 / 75%) 99%, transparent),
+        radial-gradient(1.5px 1.5px at 147px 121px, rgb(255 255 255 / 50%) 99%, transparent);
+      background-size: 193px 179px, 271px 233px, 337px 311px;
+      opacity: .35;
+      content: "";
+      pointer-events: none;
+    }
+    a { color: inherit; }
+    .shell { width: min(1160px, calc(100% - 56px)); margin-inline: auto; }
+    .topbar {
+      display: flex;
+      min-height: 86px;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand-mark {
+      display: grid;
+      width: 39px;
+      aspect-ratio: 1;
+      place-items: center;
+      border: 1px solid rgb(214 226 138 / 48%);
+      border-radius: 50%;
+      color: var(--lime);
+      font: 22px var(--serif);
+      box-shadow: 0 0 24px rgb(214 226 138 / 10%);
+    }
+    .brand-name { display: block; font: 17px/1.2 var(--serif); letter-spacing: .02em; }
+    .brand-note { display: block; margin-top: 4px; color: var(--muted); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; }
+    .back-link { color: var(--soft); font-size: 13px; text-decoration: none; transition: color .2s; }
+    .back-link:hover { color: var(--lime); }
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', sans-serif;
-            color: #e0d4ff;
-            background: linear-gradient(rgba(0,0,0,0.88), rgba(0,0,0,0.94)), 
-                        url('https://files.catbox.moe/goidia.jpg') center/cover no-repeat fixed;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
+    .hero {
+      display: grid;
+      min-height: 530px;
+      grid-template-columns: 1.02fr .98fr;
+      align-items: center;
+      gap: clamp(20px, 5vw, 78px);
+      padding-block: 44px 54px;
+    }
+    .eyebrow { display: flex; align-items: center; gap: 11px; margin: 0 0 20px; color: var(--lime); font-size: 11px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+    .eyebrow::before { width: 28px; height: 1px; background: currentColor; content: ""; }
+    h1 { max-width: 640px; margin: 0; font: 400 clamp(54px, 7.3vw, 91px)/.96 var(--serif); letter-spacing: -.055em; }
+    h1 em { color: var(--lime); font-weight: 400; }
+    .lead { max-width: 530px; margin: 27px 0 0; color: var(--soft); font-size: clamp(16px, 1.6vw, 19px); line-height: 1.85; }
+    .lead strong { color: var(--white); font-weight: 600; }
+    .hero-footnote { display: flex; align-items: center; gap: 9px; margin-top: 27px; color: var(--muted); font-size: 12px; }
+    .hero-footnote span { color: var(--rose); font-size: 16px; }
 
-        .container {
-            max-width: 680px;
-            padding: 40px 20px;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 12px;
-        }
+    .cosmos { position: relative; display: grid; min-height: 390px; place-items: center; isolation: isolate; }
+    .cosmos::before, .cosmos::after { position: absolute; z-index: -1; border: 1px solid rgb(169 145 255 / 12%); border-radius: 50%; content: ""; }
+    .cosmos::before { width: min(91%, 390px); aspect-ratio: 1; box-shadow: 0 0 100px rgb(111 76 196 / 13%), inset 0 0 60px rgb(111 76 196 / 8%); }
+    .cosmos::after { width: min(72%, 310px); aspect-ratio: 1; border-color: rgb(214 226 138 / 13%); }
+    .mandala { display: block; width: min(100%, 430px); filter: drop-shadow(0 0 36px rgb(169 145 255 / 19%)); animation: float 9s ease-in-out infinite; }
+    .mandala .orbit { fill: none; stroke: #a991ff; stroke-opacity: .52; stroke-width: 1.1; }
+    .mandala .orbit-soft { fill: none; stroke: #d6e28a; stroke-opacity: .44; stroke-width: 1; }
+    .mandala .geometry { fill: none; stroke: #d6e28a; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.6; }
+    .mandala .inner { fill: none; stroke: #ffad9c; stroke-opacity: .8; stroke-width: 1.3; }
+    .mandala .star { fill: #ffad9c; }
+    .caption { position: absolute; right: 0; bottom: 10px; color: var(--muted); font-size: 10px; letter-spacing: .19em; text-transform: uppercase; }
+    @keyframes float { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-9px) rotate(1deg); } }
 
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            color: #f0e6ff;
-            text-shadow: 0 0 30px rgba(180, 100, 255, 0.6);
-        }
+    .support-panel {
+      position: relative;
+      display: grid;
+      grid-template-columns: .78fr 1.22fr;
+      gap: clamp(28px, 6vw, 84px);
+      padding: clamp(28px, 5vw, 55px);
+      overflow: hidden;
+      border: 1px solid rgb(214 226 138 / 19%);
+      border-radius: 4px;
+      background: linear-gradient(118deg, rgb(25 25 39 / 97%), rgb(15 16 27 / 96%));
+      box-shadow: 0 25px 100px rgb(0 0 0 / 26%);
+    }
+    .support-panel::after { position: absolute; top: -130px; right: -110px; width: 360px; aspect-ratio: 1; border: 1px solid rgb(169 145 255 / 11%); border-radius: 50%; box-shadow: 0 0 0 28px rgb(169 145 255 / 3%), 0 0 0 58px rgb(169 145 255 / 2%); content: ""; pointer-events: none; }
+    .panel-intro, .amount-area { position: relative; z-index: 1; }
+    .panel-intro { align-self: center; }
+    .panel-intro .eyebrow { margin-bottom: 13px; }
+    h2 { margin: 0; font: 400 clamp(34px, 4vw, 49px)/1.04 var(--serif); letter-spacing: -.035em; }
+    .panel-copy { margin: 16px 0 0; color: var(--soft); font-size: 14px; line-height: 1.8; }
+    .amount-heading { margin: 0 0 14px; color: var(--soft); font-size: 11px; font-weight: 700; letter-spacing: .17em; text-transform: uppercase; }
+    .amounts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; }
+    .amount-btn {
+      display: flex;
+      min-height: 76px;
+      flex-direction: column;
+      justify-content: center;
+      padding: 13px 17px;
+      border: 1px solid rgb(204 197 231 / 19%);
+      border-radius: 3px;
+      background: rgb(255 255 255 / 2%);
+      text-decoration: none;
+      transition: transform .2s, border-color .2s, background .2s;
+    }
+    .amount-btn:hover { transform: translateY(-2px); border-color: rgb(214 226 138 / 75%); background: rgb(214 226 138 / 7%); }
+    .amount-btn strong { color: var(--white); font: 25px/1.1 var(--serif); }
+    .amount-btn span { margin-top: 5px; color: var(--muted); font-size: 11px; }
+    .amount-btn.any strong { color: var(--lime); font-size: 20px; }
+    .paypal-btn {
+      display: flex;
+      min-height: 58px;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 14px;
+      border: 1px solid var(--lime);
+      border-radius: 3px;
+      background: var(--lime);
+      color: #17180f;
+      font-size: 14px;
+      font-weight: 750;
+      letter-spacing: .015em;
+      text-decoration: none;
+      transition: transform .2s, background .2s, box-shadow .2s;
+    }
+    .paypal-btn:hover { transform: translateY(-2px); background: #e5efaa; box-shadow: 0 9px 30px rgb(214 226 138 / 17%); }
+    .paypal-btn svg { width: 19px; height: 19px; }
+    .secure-note { display: flex; align-items: center; justify-content: center; gap: 7px; margin: 12px 0 0; color: var(--muted); font-size: 11px; }
+    .secure-note svg { width: 13px; height: 13px; color: var(--lime); }
 
-        .poetic {
-            font-style: italic;
-            font-size: 1.18rem;
-            line-height: 1.75;
-            max-width: 520px;
-            margin: 0 auto 45px;
-            opacity: 0.95;
-        }
-
-        .amounts {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            justify-content: center;
-            margin: 40px 0;
-        }
-
-        .amount-btn {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(200, 160, 255, 0.5);
-            color: #e0d4ff;
-            padding: 16px 32px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .amount-btn:hover {
-            background: rgba(180, 100, 255, 0.3);
-            transform: translateY(-3px);
-        }
-
-        .paypal-btn {
-            display: inline-block;
-            background: #0070ba;
-            color: white;
-            font-size: 1.35rem;
-            font-weight: 600;
-            padding: 18px 55px;
-            border-radius: 50px;
-            text-decoration: none;
-            margin-top: 30px;
-            box-shadow: 0 10px 30px rgba(0, 112, 186, 0.4);
-        }
-
-        .paypal-btn:hover {
-            background: #005c99;
-            transform: translateY(-4px);
-        }
-    </style>
+    .afterglow { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 22px; padding: 37px 0 25px; color: var(--muted); font-size: 12px; text-align: center; }
+    .afterglow::before, .afterglow::after { height: 1px; background: var(--line); content: ""; }
+    footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 0 30px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; }
+    footer a { color: var(--soft); text-decoration: none; }
+    footer a:hover { color: var(--lime); }
+    :focus-visible { outline: 2px solid var(--lime); outline-offset: 4px; }
+    @media (max-width: 760px) {
+      .shell { width: min(calc(100% - 36px), 560px); }
+      .topbar { min-height: 72px; }
+      .brand-name { font-size: 15px; }
+      .hero { min-height: 0; grid-template-columns: 1fr; gap: 0; padding-block: 55px 30px; }
+      .hero-copy { margin-top: 20px; }
+      .cosmos { min-height: 300px; margin-top: 2px; }
+      .mandala { width: min(88%, 350px); }
+      .caption { right: 4%; bottom: 0; }
+      .support-panel { grid-template-columns: 1fr; gap: 25px; padding: 28px 22px; }
+      .panel-copy { max-width: 440px; }
+      .afterglow { gap: 12px; font-size: 10px; }
+    }
+    @media (max-width: 420px) {
+      .shell { width: min(calc(100% - 28px), 560px); }
+      .back-link { font-size: 12px; }
+      h1 { font-size: clamp(49px, 15vw, 65px); }
+      .cosmos { min-height: 250px; }
+      .amounts { gap: 8px; }
+      .amount-btn { min-height: 70px; padding-inline: 12px; }
+      .amount-btn strong { font-size: 23px; }
+      footer { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Support the Daily Transmissions</h1>
-        
-        <div class="poetic">
-            This art is not just decoration.<br>
-            It is a daily transmission from the deeper field — geometry that remembers, colors that awaken.<br><br>
-            If you feel seen, stirred, or strangely at home when you see these pieces, you are part of the circle.<br>
-            Your support keeps the signal strong.
-        </div>
+  <header class="topbar shell">
+    <a class="brand" href="https://silverlenz.github.io/daily-art/" aria-label="Zack Covell Daily Art home">
+      <span class="brand-mark" aria-hidden="true">Z</span>
+      <span><span class="brand-name">Zack Covell</span><span class="brand-note">Daily transmissions</span></span>
+    </a>
+    <a class="back-link" href="https://silverlenz.github.io/daily-art/">Explore the art <span aria-hidden="true">↗</span></a>
+  </header>
 
-        <p class="subtitle">Your donation helps sustain this living archive of sacred art.</p>
+  <main>
+    <section class="hero shell" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow">A living archive of sacred art</p>
+        <h1 id="hero-title">Keep the<br><em>signal alive.</em></h1>
+        <p class="lead">This work is a daily transmission—geometry, color, and symbol sent out into the world. If a piece has <strong>stopped you, stirred something, or felt like a place you already knew,</strong> you’re part of the circle.</p>
+        <p class="hero-footnote"><span aria-hidden="true">✦</span> Your support helps the work keep finding its way out.</p>
+      </div>
 
+      <div class="cosmos" aria-label="Animated sacred-geometry mandala" role="img">
+        <svg class="mandala" viewBox="0 0 440 440" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <radialGradient id="portal"><stop stop-color="#ffad9c" stop-opacity=".85"/><stop offset=".25" stop-color="#a991ff" stop-opacity=".2"/><stop offset="1" stop-color="#a991ff" stop-opacity="0"/></radialGradient>
+          </defs>
+          <circle cx="220" cy="220" r="174" fill="url(#portal)"/>
+          <g class="orbit"><circle cx="220" cy="220" r="188"/><circle cx="220" cy="220" r="163"/><circle cx="220" cy="220" r="132"/><circle cx="220" cy="220" r="92"/></g>
+          <g class="orbit-soft"><circle cx="220" cy="220" r="151"/><circle cx="220" cy="220" r="111"/><circle cx="220" cy="220" r="61"/></g>
+          <g class="geometry">
+            <path d="m220 45 152 263H68L220 45Z M220 395 68 132h304L220 395Z"/>
+            <path d="m220 71 129 75v148l-129 75-129-75V146l129-75Z"/>
+            <path d="m220 89 131 131-131 131L89 220 220 89Z"/>
+            <path d="M220 58v324M58 220h324M105 105l230 230M335 105 105 335" stroke-opacity=".4"/>
+          </g>
+          <g class="inner">
+            <circle cx="220" cy="220" r="42"/>
+            <path d="m220 174 46 46-46 46-46-46 46-46Z"/>
+            <path d="m220 194 10 20 22 6-22 6-10 20-10-20-22-6 22-6 10-20Z" class="star" stroke="none"/>
+          </g>
+          <g fill="#d6e28a">
+            <circle cx="220" cy="32" r="3"/><circle cx="408" cy="220" r="3"/><circle cx="220" cy="408" r="3"/><circle cx="32" cy="220" r="3"/>
+            <circle cx="87" cy="87" r="2.2"/><circle cx="353" cy="87" r="2.2"/><circle cx="353" cy="353" r="2.2"/><circle cx="87" cy="353" r="2.2"/>
+          </g>
+        </svg>
+        <span class="caption">A pattern in motion · no. ∞</span>
+      </div>
+    </section>
+
+    <section class="support-panel shell" aria-labelledby="support-title">
+      <div class="panel-intro">
+        <p class="eyebrow">Send a little energy back</p>
+        <h2 id="support-title">Choose your<br>frequency.</h2>
+        <p class="panel-copy">Every contribution helps sustain the daily practice and keep this growing archive of art open to everyone. Give what feels right—there’s no small signal.</p>
+      </div>
+      <div class="amount-area">
+        <p class="amount-heading">Choose an amount</p>
         <div class="amounts">
-            <div class="amount-btn" onclick="window.location.href='https://paypal.me/zgc/5.55'">$5.55 — One coffee’s worth</div>
-            <div class="amount-btn" onclick="window.location.href='https://paypal.me/zgc/11.11'">$11.11 — Sacred number</div>
-            <div class="amount-btn" onclick="window.location.href='https://paypal.me/zgc/22.22'">$22.22 — Deep resonance</div>
-            <div class="amount-btn" onclick="window.location.href='https://paypal.me/zgc'">Any Amount</div>
+          <a class="amount-btn" href="https://paypal.me/zgc/5.55" target="_blank" rel="noopener noreferrer"><strong>$5.55</strong><span>One coffee’s worth</span></a>
+          <a class="amount-btn" href="https://paypal.me/zgc/11.11" target="_blank" rel="noopener noreferrer"><strong>$11.11</strong><span>A sacred number</span></a>
+          <a class="amount-btn" href="https://paypal.me/zgc/22.22" target="_blank" rel="noopener noreferrer"><strong>$22.22</strong><span>Deep resonance</span></a>
+          <a class="amount-btn any" href="https://paypal.me/zgc" target="_blank" rel="noopener noreferrer"><strong>Any amount</strong><span>Follow your own frequency</span></a>
         </div>
-
-        <a href="https://paypal.me/zgc" class="paypal-btn" target="_blank">
-            Support the Daily Transmissions
+        <a class="paypal-btn" href="https://paypal.me/zgc" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 4h7.1c3.2 0 5.1 1.8 4.5 4.8-.6 3.2-2.7 4.9-6 4.9H9.8L8.7 20H4.9L7 4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m10 17-.5 3h4.2c.5 0 .9-.4 1-.9l.7-4.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          Support the Daily Transmissions <span aria-hidden="true">↗</span>
         </a>
+        <p class="secure-note"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 7V5a4 4 0 0 1 8 0v2m-9 0h10v7H3V7Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg> Secure checkout opens with PayPal</p>
+      </div>
+    </section>
 
-        <div style="margin-top: 60px; opacity: 0.7; font-size: 0.95rem;">
-            Thank you for helping keep the transmissions alive ⚡
-        </div>
-    </div>
+    <div class="afterglow shell" aria-label="Thank you">Thank you for helping the transmissions continue</div>
+  </main>
+
+  <footer class="shell">
+    <span>Made with care, sent into the cosmos <span aria-hidden="true">✦</span></span>
+    <a href="https://silverlenz.github.io/daily-art/">Return to the gallery ↗</a>
+  </footer>
 </body>
 </html>
